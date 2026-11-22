@@ -153,7 +153,7 @@ fn test_scroll_container_is_kept() {
     }
 }
 
-/// Section headings (`h2`–`h3`) and single-heading `div` wrappers whose class or id contains
+/// Section headings (`h1`–`h6`) and single-heading `div` wrappers whose class or id contains
 /// `"header"` (such as `header-anchor-post` or `section-header`) are kept when they accompany
 /// article paragraphs, while page-level header banners with links or navigation are still stripped.
 #[test]
