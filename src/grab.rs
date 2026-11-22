@@ -195,7 +195,7 @@ fn is_unlikely_candidate(node: &NodeRef) -> bool {
     !is_section_header(node, &match_string)
 }
 
-/// Keeps `h2`/`h3` headings and single-heading `div` wrappers when `"header"` is their only
+/// Keeps headings and single-heading `div` wrappers when `"header"` is their only
 /// unlikely match, provided they sit next to article paragraphs (not navigation or links).
 fn is_section_header(node: &NodeRef, match_string: &str) -> bool {
     if !match_string.contains("header")
@@ -205,7 +205,10 @@ fn is_section_header(node: &NodeRef, match_string: &str) -> bool {
         return false;
     }
 
-    if node.has_name("h2") || node.has_name("h3") {
+    if node
+        .qual_name_ref()
+        .is_some_and(|qn| matches!(qn.local.as_ref(), "h1" | "h2" | "h3" | "h4" | "h5" | "h6"))
+    {
         return link_density(node, None) == 0.0
             && node.parent().is_some_and(|p| {
                 p.element_children()

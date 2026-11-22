@@ -169,6 +169,7 @@ fn test_header_class_heading_is_kept() {
            <h2 class="header-anchor-post"><a href="https://example.com/ad">Promo Heading</a></h2>
            <h2 class="header-anchor-post">Initial Architecture</h2>{p}{p}{p}
            <h3 class="header-anchor-post">Request Coalescing</h3>{p}{p}
+           <h1 class="header-anchor-post">Rollout</h1>{p}{p}
            <div class="section">
              <div class="section-header"><div class="section-title"><h2>Treatment Plan</h2></div></div>
              <div class="section-info">{p}{p}</div>
@@ -179,6 +180,7 @@ fn test_header_class_heading_is_kept() {
     let article = ra.parse().unwrap();
     assert!(article.content.contains("Initial Architecture"));
     assert!(article.content.contains("Request Coalescing"));
+    assert!(article.content.contains("Rollout"));
     assert!(article.content.contains("Treatment Plan"));
     assert!(!article.content.contains("Site Banner"));
     assert!(!article.content.contains("Section Banner"));
